@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whl.app.mapper.FoodMapper">
+  <resultMap id="BaseResultMap" type="com.whl.app.entity.Food">
+    <id column="food_id" jdbcType="INTEGER" property="foodId" />
+    <result column="food_name" jdbcType="VARCHAR" property="foodName" />
+    <result column="food_classification_id" jdbcType="INTEGER" property="foodClassificationId" />
+    <result column="food_price" jdbcType="DOUBLE" property="foodPrice" />
+    <result column="food_img" jdbcType="VARCHAR" property="foodImg" />
+    <result column="food_desc" jdbcType="VARCHAR" property="foodDesc" />
+    <result column="food_status" jdbcType="INTEGER" property="foodStatus" />
+    <result column="food_store" jdbcType="INTEGER" property="foodStore" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    food_id, food_name, food_classification_id, food_price, food_img, food_desc, food_status, 
+    food_store, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.whl.app.entity.FoodExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from food
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from food
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from food
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.whl.app.entity.FoodExample">
+    delete from food
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.whl.app.entity.Food">
+    insert into food (food_id, food_name, food_classification_id, 
+      food_price, food_img, food_desc, 
+      food_status, food_store, create_time, 
+      update_time)
+    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodClassificationId,jdbcType=INTEGER}, 
+      #{foodPrice,jdbcType=DOUBLE}, #{foodImg,jdbcType=VARCHAR}, #{foodDesc,jdbcType=VARCHAR}, 
+      #{foodStatus,jdbcType=INTEGER}, #{foodStore,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whl.app.entity.Food">
+    insert into food
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="foodId != null">
+        food_id,
+      </if>
+      <if test="foodName != null">
+        food_name,
+      </if>
+      <if test="foodClassificationId != null">
+        food_classification_id,
+      </if>
+      <if test="foodPrice != null">
+        food_price,
+      </if>
+      <if test="foodImg != null">
+        food_img,
+      </if>
+      <if test="foodDesc != null">
+        food_desc,
+      </if>
+      <if test="foodStatus != null">
+        food_status,
+      </if>
+      <if test="foodStore != null">
+        food_store,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="foodId != null">
+        #{foodId,jdbcType=INTEGER},
+      </if>
+      <if test="foodName != null">
+        #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodClassificationId != null">
+        #{foodClassificationId,jdbcType=INTEGER},
+      </if>
+      <if test="foodPrice != null">
+        #{foodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="foodImg != null">
+        #{foodImg,jdbcType=VARCHAR},
+      </if>
+      <if test="foodDesc != null">
+        #{foodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="foodStatus != null">
+        #{foodStatus,jdbcType=INTEGER},
+      </if>
+      <if test="foodStore != null">
+        #{foodStore,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.whl.app.entity.FoodExample" resultType="java.lang.Long">
+    select count(*) from food
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update food
+    <set>
+      <if test="record.foodId != null">
+        food_id = #{record.foodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.foodName != null">
+        food_name = #{record.foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.foodClassificationId != null">
+        food_classification_id = #{record.foodClassificationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.foodPrice != null">
+        food_price = #{record.foodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.foodImg != null">
+        food_img = #{record.foodImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.foodDesc != null">
+        food_desc = #{record.foodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.foodStatus != null">
+        food_status = #{record.foodStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.foodStore != null">
+        food_store = #{record.foodStore,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update food
+    set food_id = #{record.foodId,jdbcType=INTEGER},
+      food_name = #{record.foodName,jdbcType=VARCHAR},
+      food_classification_id = #{record.foodClassificationId,jdbcType=INTEGER},
+      food_price = #{record.foodPrice,jdbcType=DOUBLE},
+      food_img = #{record.foodImg,jdbcType=VARCHAR},
+      food_desc = #{record.foodDesc,jdbcType=VARCHAR},
+      food_status = #{record.foodStatus,jdbcType=INTEGER},
+      food_store = #{record.foodStore,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whl.app.entity.Food">
+    update food
+    <set>
+      <if test="foodName != null">
+        food_name = #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodClassificationId != null">
+        food_classification_id = #{foodClassificationId,jdbcType=INTEGER},
+      </if>
+      <if test="foodPrice != null">
+        food_price = #{foodPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="foodImg != null">
+        food_img = #{foodImg,jdbcType=VARCHAR},
+      </if>
+      <if test="foodDesc != null">
+        food_desc = #{foodDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="foodStatus != null">
+        food_status = #{foodStatus,jdbcType=INTEGER},
+      </if>
+      <if test="foodStore != null">
+        food_store = #{foodStore,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whl.app.entity.Food">
+    update food
+    set food_name = #{foodName,jdbcType=VARCHAR},
+      food_classification_id = #{foodClassificationId,jdbcType=INTEGER},
+      food_price = #{foodPrice,jdbcType=DOUBLE},
+      food_img = #{foodImg,jdbcType=VARCHAR},
+      food_desc = #{foodDesc,jdbcType=VARCHAR},
+      food_status = #{foodStatus,jdbcType=INTEGER},
+      food_store = #{foodStore,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </update>
+</mapper>
