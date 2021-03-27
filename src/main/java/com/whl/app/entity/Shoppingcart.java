@@ -11,6 +11,10 @@ public class Shoppingcart {
 
     private String foodspecificationids;
 
+    private Double foodPrice;
+
+    private String foodName;
+
     public Integer getShppingcartId() {
         return shppingcartId;
     }
@@ -49,5 +53,33 @@ public class Shoppingcart {
 
     public void setFoodspecificationids(String foodspecificationids) {
         this.foodspecificationids = foodspecificationids == null ? null : foodspecificationids.trim();
+    }
+
+    public Double getFoodPrice() {
+        return foodPrice;
+    }
+
+    public void setFoodPrice(Double foodPrice) {
+        this.foodPrice = foodPrice;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    @Override
+    public String toString() {
+        return "Shoppingcart{" +
+                "shppingcartId=" + shppingcartId +
+                ", foodId=" + foodId +
+                ", openId='" + openId + '\'' +
+                ", count=" + count +
+                ", foodspecificationids='" + foodspecificationids + '\'' +
+                ", foodPrice=" + foodPrice +
+                '}';
     }
 }

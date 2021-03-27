@@ -35,6 +35,7 @@
         <!--<mapper resource="tk/mybatis/simple/mapper/UserMapper.xml" />-->
         <mapper resource="mapping/FoodClassificationMapper.xml" />
         <mapper resource="mapping/FoodSpecificationMapper.xml" />
+        <mapper resource="mapping/ShoppingcartMapper.xml" />
         <!--第二种做法-->
 <!--        <package name="mapping"/>-->
     </mappers>

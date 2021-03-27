@@ -4,8 +4,13 @@ import com.whl.app.entity.Shoppingcart;
 import com.whl.app.entity.ShoppingcartExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface ShoppingcartMapper {
+    List<Shoppingcart> selectByOpenId(String openId);
+
+
     long countByExample(ShoppingcartExample example);
 
     int deleteByExample(ShoppingcartExample example);

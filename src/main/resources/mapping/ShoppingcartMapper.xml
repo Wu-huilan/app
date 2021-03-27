@@ -7,6 +7,11 @@
     <result column="open_id" jdbcType="VARCHAR" property="openId" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="foodSpecificationIds" jdbcType="VARCHAR" property="foodspecificationids" />
+    <result column="food_price" jdbcType="DOUBLE" property="foodPrice" />
+    <result column="food_name" jdbcType="VARCHAR" property="foodName" />
+<!--    <association property="food" javaType="com.whl.app.entity.Food" autoMapping="true" >-->
+<!--      <id column="food_price" property="foodPrice"></id>-->
+<!--    </association>-->
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,6 +74,15 @@
   <sql id="Base_Column_List">
     shppingCart_id, food_id, open_id, count, foodSpecificationIds
   </sql>
+
+  <select id="selectByOpenId"  resultMap="BaseResultMap">
+    select
+    shppingCart_id, sc.food_id, open_id, count, foodSpecificationIds,f.food_price,food_name
+    from shoppingcart sc,food f
+    where open_id = #{openId} and sc.food_id = f.food_id
+  </select>
+
+
   <select id="selectByExample" parameterType="com.whl.app.entity.ShoppingcartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
