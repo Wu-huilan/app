@@ -22,6 +22,7 @@ public class ShoppingCartController {
 
     @RequestMapping("/add")
     public ResponseMessage add(@RequestBody Shoppingcart shoppingcart) {
+        System.out.println(shoppingcart);
         responseMessage = new ResponseMessage();
         int count = shoppingService.insert(shoppingcart);
         if(count == 1){
@@ -50,7 +51,7 @@ public class ShoppingCartController {
     public ResponseMessage update(@RequestBody Shoppingcart shoppingcart) {
         responseMessage = new ResponseMessage();
         if(shoppingcart.getCount() == 0){
-            shoppingService.deleleShoppingById(shoppingcart.getShppingcartId());
+            shoppingService.deleleShoppingById(shoppingcart.getShoppingcartId());
             responseMessage.setStatus("success");
             responseMessage.setMsg("删除购物车项成功");
         }else {

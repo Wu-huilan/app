@@ -1,7 +1,7 @@
 package com.whl.app.entity;
 
 public class Shoppingcart {
-    private Integer shppingcartId;
+    private Integer shoppingcartId;
 
     private Integer foodId;
 
@@ -11,16 +11,18 @@ public class Shoppingcart {
 
     private String foodspecificationids;
 
+    private String foodspecificationnames;
+
     private Double foodPrice;
 
     private String foodName;
 
-    public Integer getShppingcartId() {
-        return shppingcartId;
+    public Integer getShoppingcartId() {
+        return shoppingcartId;
     }
 
-    public void setShppingcartId(Integer shppingcartId) {
-        this.shppingcartId = shppingcartId;
+    public void setShoppingcartId(Integer shoppingcartId) {
+        this.shoppingcartId = shoppingcartId;
     }
 
     public Integer getFoodId() {
@@ -55,6 +57,14 @@ public class Shoppingcart {
         this.foodspecificationids = foodspecificationids == null ? null : foodspecificationids.trim();
     }
 
+    public String getFoodspecificationnames() {
+        return foodspecificationnames;
+    }
+
+    public void setFoodspecificationnames(String foodspecificationnames) {
+        this.foodspecificationnames = foodspecificationnames == null ? null : foodspecificationnames.trim();
+    }
+
     public Double getFoodPrice() {
         return foodPrice;
     }
@@ -74,12 +84,14 @@ public class Shoppingcart {
     @Override
     public String toString() {
         return "Shoppingcart{" +
-                "shppingcartId=" + shppingcartId +
+                "shoppingcartId=" + shoppingcartId +
                 ", foodId=" + foodId +
                 ", openId='" + openId + '\'' +
                 ", count=" + count +
                 ", foodspecificationids='" + foodspecificationids + '\'' +
+                ", foodspecificationnames='" + foodspecificationnames + '\'' +
                 ", foodPrice=" + foodPrice +
+                ", foodName='" + foodName + '\'' +
                 '}';
     }
 }

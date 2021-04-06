@@ -2,16 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whl.app.mapper.ShoppingcartMapper">
   <resultMap id="BaseResultMap" type="com.whl.app.entity.Shoppingcart">
-    <id column="shppingCart_id" jdbcType="INTEGER" property="shppingcartId" />
+    <id column="shoppingCart_id" jdbcType="INTEGER" property="shoppingcartId" />
     <result column="food_id" jdbcType="INTEGER" property="foodId" />
     <result column="open_id" jdbcType="VARCHAR" property="openId" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="foodSpecificationIds" jdbcType="VARCHAR" property="foodspecificationids" />
+    <result column="foodSpecificationNames" jdbcType="VARCHAR" property="foodspecificationnames" />
     <result column="food_price" jdbcType="DOUBLE" property="foodPrice" />
     <result column="food_name" jdbcType="VARCHAR" property="foodName" />
-<!--    <association property="food" javaType="com.whl.app.entity.Food" autoMapping="true" >-->
-<!--      <id column="food_price" property="foodPrice"></id>-->
-<!--    </association>-->
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,17 +70,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    shppingCart_id, food_id, open_id, count, foodSpecificationIds
+    shoppingCart_id, food_id, open_id, count, foodSpecificationIds, foodSpecificationNames
   </sql>
-
-  <select id="selectByOpenId"  resultMap="BaseResultMap">
+  <select id="selectByOpenId" resultMap="BaseResultMap">
     select
-    shppingCart_id, sc.food_id, open_id, count, foodSpecificationIds,f.food_price,food_name
+    shoppingCart_id, sc.food_id, open_id, count, foodSpecificationIds,f.food_price,food_name,foodSpecificationNames
     from shoppingcart sc,food f
     where open_id = #{openId} and sc.food_id = f.food_id
   </select>
-
-
   <select id="selectByExample" parameterType="com.whl.app.entity.ShoppingcartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -101,11 +96,11 @@
     select 
     <include refid="Base_Column_List" />
     from shoppingcart
-    where shppingCart_id = #{shppingcartId,jdbcType=INTEGER}
+    where shoppingCart_id = #{shoppingcartId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from shoppingcart
-    where shppingCart_id = #{shppingcartId,jdbcType=INTEGER}
+    where shoppingCart_id = #{shoppingcartId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.whl.app.entity.ShoppingcartExample">
     delete from shoppingcart
@@ -114,16 +109,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.whl.app.entity.Shoppingcart">
-    insert into shoppingcart (shppingCart_id, food_id, open_id, 
-      count, foodSpecificationIds)
-    values (#{shppingcartId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
-      #{count,jdbcType=INTEGER}, #{foodspecificationids,jdbcType=VARCHAR})
+    insert into shoppingcart (shoppingCart_id, food_id, open_id, 
+      count, foodSpecificationIds, foodSpecificationNames
+      )
+    values (#{shoppingcartId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{foodspecificationids,jdbcType=VARCHAR}, #{foodspecificationnames,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.whl.app.entity.Shoppingcart">
     insert into shoppingcart
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="shppingcartId != null">
-        shppingCart_id,
+      <if test="shoppingcartId != null">
+        shoppingCart_id,
       </if>
       <if test="foodId != null">
         food_id,
@@ -137,10 +134,13 @@
       <if test="foodspecificationids != null">
         foodSpecificationIds,
       </if>
+      <if test="foodspecificationnames != null">
+        foodSpecificationNames,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="shppingcartId != null">
-        #{shppingcartId,jdbcType=INTEGER},
+      <if test="shoppingcartId != null">
+        #{shoppingcartId,jdbcType=INTEGER},
       </if>
       <if test="foodId != null">
         #{foodId,jdbcType=INTEGER},
@@ -154,6 +154,9 @@
       <if test="foodspecificationids != null">
         #{foodspecificationids,jdbcType=VARCHAR},
       </if>
+      <if test="foodspecificationnames != null">
+        #{foodspecificationnames,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.whl.app.entity.ShoppingcartExample" resultType="java.lang.Long">
@@ -165,8 +168,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update shoppingcart
     <set>
-      <if test="record.shppingcartId != null">
-        shppingCart_id = #{record.shppingcartId,jdbcType=INTEGER},
+      <if test="record.shoppingcartId != null">
+        shoppingCart_id = #{record.shoppingcartId,jdbcType=INTEGER},
       </if>
       <if test="record.foodId != null">
         food_id = #{record.foodId,jdbcType=INTEGER},
@@ -180,6 +183,9 @@
       <if test="record.foodspecificationids != null">
         foodSpecificationIds = #{record.foodspecificationids,jdbcType=VARCHAR},
       </if>
+      <if test="record.foodspecificationnames != null">
+        foodSpecificationNames = #{record.foodspecificationnames,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -187,11 +193,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update shoppingcart
-    set shppingCart_id = #{record.shppingcartId,jdbcType=INTEGER},
+    set shoppingCart_id = #{record.shoppingcartId,jdbcType=INTEGER},
       food_id = #{record.foodId,jdbcType=INTEGER},
       open_id = #{record.openId,jdbcType=VARCHAR},
       count = #{record.count,jdbcType=INTEGER},
-      foodSpecificationIds = #{record.foodspecificationids,jdbcType=VARCHAR}
+      foodSpecificationIds = #{record.foodspecificationids,jdbcType=VARCHAR},
+      foodSpecificationNames = #{record.foodspecificationnames,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,15 +218,19 @@
       <if test="foodspecificationids != null">
         foodSpecificationIds = #{foodspecificationids,jdbcType=VARCHAR},
       </if>
+      <if test="foodspecificationnames != null">
+        foodSpecificationNames = #{foodspecificationnames,jdbcType=VARCHAR},
+      </if>
     </set>
-    where shppingCart_id = #{shppingcartId,jdbcType=INTEGER}
+    where shoppingCart_id = #{shoppingcartId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.whl.app.entity.Shoppingcart">
     update shoppingcart
     set food_id = #{foodId,jdbcType=INTEGER},
       open_id = #{openId,jdbcType=VARCHAR},
       count = #{count,jdbcType=INTEGER},
-      foodSpecificationIds = #{foodspecificationids,jdbcType=VARCHAR}
-    where shppingCart_id = #{shppingcartId,jdbcType=INTEGER}
+      foodSpecificationIds = #{foodspecificationids,jdbcType=VARCHAR},
+      foodSpecificationNames = #{foodspecificationnames,jdbcType=VARCHAR}
+    where shoppingCart_id = #{shoppingcartId,jdbcType=INTEGER}
   </update>
 </mapper>

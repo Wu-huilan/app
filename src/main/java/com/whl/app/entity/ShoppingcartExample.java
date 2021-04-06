@@ -104,63 +104,63 @@ public class ShoppingcartExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andShppingcartIdIsNull() {
-            addCriterion("shppingCart_id is null");
+        public Criteria andShoppingcartIdIsNull() {
+            addCriterion("shoppingCart_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdIsNotNull() {
-            addCriterion("shppingCart_id is not null");
+        public Criteria andShoppingcartIdIsNotNull() {
+            addCriterion("shoppingCart_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdEqualTo(Integer value) {
-            addCriterion("shppingCart_id =", value, "shppingcartId");
+        public Criteria andShoppingcartIdEqualTo(Integer value) {
+            addCriterion("shoppingCart_id =", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdNotEqualTo(Integer value) {
-            addCriterion("shppingCart_id <>", value, "shppingcartId");
+        public Criteria andShoppingcartIdNotEqualTo(Integer value) {
+            addCriterion("shoppingCart_id <>", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdGreaterThan(Integer value) {
-            addCriterion("shppingCart_id >", value, "shppingcartId");
+        public Criteria andShoppingcartIdGreaterThan(Integer value) {
+            addCriterion("shoppingCart_id >", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("shppingCart_id >=", value, "shppingcartId");
+        public Criteria andShoppingcartIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shoppingCart_id >=", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdLessThan(Integer value) {
-            addCriterion("shppingCart_id <", value, "shppingcartId");
+        public Criteria andShoppingcartIdLessThan(Integer value) {
+            addCriterion("shoppingCart_id <", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdLessThanOrEqualTo(Integer value) {
-            addCriterion("shppingCart_id <=", value, "shppingcartId");
+        public Criteria andShoppingcartIdLessThanOrEqualTo(Integer value) {
+            addCriterion("shoppingCart_id <=", value, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdIn(List<Integer> values) {
-            addCriterion("shppingCart_id in", values, "shppingcartId");
+        public Criteria andShoppingcartIdIn(List<Integer> values) {
+            addCriterion("shoppingCart_id in", values, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdNotIn(List<Integer> values) {
-            addCriterion("shppingCart_id not in", values, "shppingcartId");
+        public Criteria andShoppingcartIdNotIn(List<Integer> values) {
+            addCriterion("shoppingCart_id not in", values, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdBetween(Integer value1, Integer value2) {
-            addCriterion("shppingCart_id between", value1, value2, "shppingcartId");
+        public Criteria andShoppingcartIdBetween(Integer value1, Integer value2) {
+            addCriterion("shoppingCart_id between", value1, value2, "shoppingcartId");
             return (Criteria) this;
         }
 
-        public Criteria andShppingcartIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("shppingCart_id not between", value1, value2, "shppingcartId");
+        public Criteria andShoppingcartIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("shoppingCart_id not between", value1, value2, "shoppingcartId");
             return (Criteria) this;
         }
 
@@ -421,6 +421,76 @@ public class ShoppingcartExample {
 
         public Criteria andFoodspecificationidsNotBetween(String value1, String value2) {
             addCriterion("foodSpecificationIds not between", value1, value2, "foodspecificationids");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesIsNull() {
+            addCriterion("foodSpecificationNames is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesIsNotNull() {
+            addCriterion("foodSpecificationNames is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesEqualTo(String value) {
+            addCriterion("foodSpecificationNames =", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesNotEqualTo(String value) {
+            addCriterion("foodSpecificationNames <>", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesGreaterThan(String value) {
+            addCriterion("foodSpecificationNames >", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesGreaterThanOrEqualTo(String value) {
+            addCriterion("foodSpecificationNames >=", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesLessThan(String value) {
+            addCriterion("foodSpecificationNames <", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesLessThanOrEqualTo(String value) {
+            addCriterion("foodSpecificationNames <=", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesLike(String value) {
+            addCriterion("foodSpecificationNames like", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesNotLike(String value) {
+            addCriterion("foodSpecificationNames not like", value, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesIn(List<String> values) {
+            addCriterion("foodSpecificationNames in", values, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesNotIn(List<String> values) {
+            addCriterion("foodSpecificationNames not in", values, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesBetween(String value1, String value2) {
+            addCriterion("foodSpecificationNames between", value1, value2, "foodspecificationnames");
+            return (Criteria) this;
+        }
+
+        public Criteria andFoodspecificationnamesNotBetween(String value1, String value2) {
+            addCriterion("foodSpecificationNames not between", value1, value2, "foodspecificationnames");
             return (Criteria) this;
         }
     }

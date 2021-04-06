@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 public interface ShoppingcartMapper {
     List<Shoppingcart> selectByOpenId(String openId);
 
-
     long countByExample(ShoppingcartExample example);
 
     int deleteByExample(ShoppingcartExample example);
 
-    int deleteByPrimaryKey(Integer shppingcartId);
+    int deleteByPrimaryKey(Integer shoppingcartId);
 
     int insert(Shoppingcart record);
 
@@ -23,7 +22,7 @@ public interface ShoppingcartMapper {
 
     List<Shoppingcart> selectByExample(ShoppingcartExample example);
 
-    Shoppingcart selectByPrimaryKey(Integer shppingcartId);
+    Shoppingcart selectByPrimaryKey(Integer shoppingcartId);
 
     int updateByExampleSelective(@Param("record") Shoppingcart record, @Param("example") ShoppingcartExample example);
 

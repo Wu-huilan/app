@@ -61,9 +61,11 @@ public class ShoppingMapperTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         ShoppingcartMapper shoppingcartMapper = sqlSession.getMapper(ShoppingcartMapper.class);
         Shoppingcart shoppingcart = new Shoppingcart();
-        shoppingcart.setShppingcartId(8);
+        shoppingcart.setShoppingcartId(8);
         shoppingcart.setCount(24);
         int i = shoppingcartMapper.updateByPrimaryKeySelective(shoppingcart);
         System.out.println(i);
     }
 }
+//foodSpecificationids
+//foodSpecificationIds
