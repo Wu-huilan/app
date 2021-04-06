@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/wx_ordersystem?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    password: Xklwhl123
+    url: jdbc:mysql://47.98.135.137:3306/wx_ordersystem?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
